@@ -187,6 +187,7 @@ sub _walk {
     my $i = 0;
 
     return $self->_end($host, 'Timeout') unless(ref $response);
+    return $self->_end($host, ${$host->session}->{ErrorStr}) if ${$host->session}->{ErrorNum};
 
     while($i < @$response) {
         my $splice = 2;
